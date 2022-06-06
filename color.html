@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme-color" content="#8419e5">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Picker - Get Web</title>
+    <link rel="stylesheet" href="colorjoe.css">
+    <script src="colorjoe.min.js"></script>    
+    <style>
+        body {
+            background: #000;          
+            color:#fff;
+            margin:0;       
+            overscroll-behavior: contain;
+            user-select:none;
+                 }
+          
+          ::selection{
+          color:#000;
+          background:#fff;          }          
+          
+          .main{
+          	height:100vh;
+          	width:100vw;
+          	background:transparent;
+          	display:flex;
+          	align-items:center; 
+            justify-content:center;
+            
+            flex-direction:column;            }
+          
+          h3{
+           color:#fff;
+           position: absolute;
+           top:10px;
+           letter-spacing:1.5px;
+           font-weight:700;
+           font-family: fantasy; 
+           padding-bottom:10px;
+           border-bottom:4px solid #fff;
+           border-radius:10px;
+          }
+          
+          #homea{
+          position: absolute;
+           top:63px;
+           text-decoration:none;
+           color:#8419e5;
+           background: #fff;
+           border-radius:10px; 
+           padding:8px;
+          }          
+          
+          hr{
+          width:90%;
+          position: absolute;
+           top:95px;
+           height:2px;
+           background:#fff;
+           font-family:fantasy;
+          }
+          
+        .colorPicker {
+            background: none;
+            border: none;
+            margin: 0;
+        }
+
+        .colorPicker .oned {
+            margin-right: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction:column;
+            width:90%;
+            padding:5px 5px 5px 5px;
+            background: #2b303a;
+            border-radius: 5px;
+            
+            margin-top:5rem;  
+            transform:scale(0.95);
+                 }
+
+         @media(min-width:490px){
+          .container{
+           flex-direction:row;
+           align-items:center;         
+           transform:scale(1);
+             }				
+           }
+
+            @media(min-width:1024px){
+          .container{
+           width:70%;
+           }				
+           h3{
+           	top:10px;	
+           }
+          #homea{
+           top:75px;
+           }
+           hr{
+           	top:110px;
+           }
+           }
+
+        .config {
+            flex-grow: 1;
+            margin-left: 0px;
+            padding:20px;
+        }
+      @media(min-width:490px){
+        .config {
+            flex-grow: 1;
+            margin-left: 40px;
+            padding:20px;
+        } 	
+        }
+        
+        
+        .config-title {
+            text-align: center;
+            padding: 15px 0;
+            font-family: sans-serif;
+            font-weight: bold;
+        }
+
+        .selected-color-text {
+            text-align: center;
+            font-family: monospace;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            user-select:all;
+                }
+
+        .selected-color,
+        .saved-color {
+            height: 15px;
+            border: 1px solid #eeeeee;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .saved-color:not(:last-of-type) {
+            margin-bottom: 5px;
+        }
+       .saved-color{
+       	background:#8419e5;
+       	padding:4px;         
+       	user-select:all;
+       	font-size:13px;
+       	  }
+       	
+       	#hidec{
+       	display:none;
+       	}
+       	#hideco{
+       	display:none;
+       	}
+       	#hidecol{
+       	display:none;
+       	}
+       	#hidecolo{
+       	display:none;
+       	}
+
+#go{
+position:absolute;				
+top:30px;
+left:20px;
+}
+
+    </style>
+</head>
+<body>
+<a href="index.html"><img src="home.png" width="30" id="go"></a>	
+				
+<div class="main">
+<h3>Color Picker</h3>
+    <div class="container">
+        <div class="colorjoe"></div>
+        <div class="config">
+            <div class="config-title">Selected Color👇</div>
+            <div class="selected-color-text"></div>
+            <div class="selected-color"></div>
+            <div class="config-title">Most Used Colors👇</div>       
+                 
+             <div class="saved-color" onclick="showc()"><font color="#fff" id="hidec">#8419e5</font></div>
+            
+            <div class="saved-color" style="background:#00ffff;" onclick="showco()"><font color="#000" id="hideco">#00ffff</font></div>
+            
+            <div class="saved-color" style="background:#fff100;" onclick="showcol()"><font color="#000" id="hidecol">#fff100</font></div>
+            
+            <div class="saved-color" style="background:#0018ff;" onclick="showcolo()"><font color="#fff" id="hidecolo">#0018ff</font></div>
+      
+        </div>        
+    </div>
+</div>
+
+    <script>
+        class ColorPicker {
+            constructor(root) {
+                this.root = root;
+                this.colorjoe = colorjoe.rgb(this.root.querySelector(".colorjoe"));
+                this.selectedColor = null;
+                this.savedColors = this.getSavedColors();
+
+                this.colorjoe.show();
+                this.setSelectedColor("#009578");
+
+                this.colorjoe.on("change", color => {
+                    this.setSelectedColor(color.hex(), true);
+                });
+
+                this.root.querySelectorAll(".saved-coler").forEach((el, i) => {
+                    this.showSavedColor(el, this.savedColors[i]);
+
+                    el.addEventListener("mouseup", e => {
+                        if (e.button == 1) {
+                            this.saveColor(this.selectedColor, i);
+                            this.showSavedColor(el, this.selectedColor);
+                        }
+
+                        this.setSelectedColor(el.dataset.color);
+                    });
+                });
+            }
+
+            setSelectedColor(color, skipCjUpdate = false) {
+                this.selectedColor = color;
+                this.root.querySelector(".selected-color-text").textContent = color;
+                this.root.querySelector(".selected-color").style.background = color;
+
+                if (!skipCjUpdate) {
+                    this.colorjoe.set(color);
+                }
+            }
+
+            getSavedColors() {
+                const saved = JSON.parse(localStorage.getItem("colorpicker-saved") || "[]");
+
+                return new Array(5).fill("#ffffff").map((defaultColor, i) => {
+                    return saved[i] || defaultColor;
+                });
+            }
+
+            showSavedColor(element, color) {
+                element.style.background = color;
+                element.dataset.color = color;
+            }
+
+            saveColor(color, i) {
+                this.savedColors[i] = color;
+                localStorage.setItem("colorpicker-saved", JSON.stringify(this.savedColors));
+            }
+        }
+
+        const cp = new ColorPicker(document.querySelector(".container"));
+    </script>
+ 
+ <script>
+ function showc(){
+ document.getElementById("hidec").style.display="block";
+ document.getElementById("myAudio").play();
+ }
+</script>
+<script>
+function showco(){
+ document.getElementById("hideco").style.display="block";
+  document.getElementById("myAudio").play();
+ }
+</script>
+<script>
+function showcol(){
+ document.getElementById("hidecol").style.display="block";
+ document.getElementById("myAudio").play(); 
+ }
+</script>
+<script>
+function showcolo(){
+ document.getElementById("hidecolo").style.display="block";
+  document.getElementById("myAudio").play();
+ }
+</script>
+<script>
+function sound(){
+  document.getElementById("myAudio").play();
+ }
+</script>
+
+</body>
+</html>

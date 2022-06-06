@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+				<meta charset="UTF-8">
+				<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"/>
+				<title>Page title</title>
+</head>
+<body>
+<center><h3 id="head">Get source code</h3></center>
+
+<p>Type in a url and tap on the 'Go' button to get the source code used for a website. <br> Once completed, you can view it right away or save it as a new project.</p>
+
+<form onsubmit="get()" action="javascript:void(0)">
+<div id="main">
+<h4>URL :</h4>
+<input type="url" id="go" placeholder="https://" required>
+<input type="Submit" id="goes" value="Go">
+</div>
+</form>
+
+<!-- iframe for result-->
+<div id="for-result">
+         <div id="xyz">
+		     <h2 onclick="clos()">&#8592;</h2>
+		     <h3>Index.html</h3>
+         </div>
+<div id="c-frame"><iframe id="code"></iframe></div>
+</div>
+
+
+<style>
+body{
+margin:0;
+padding:0;
+user-select:none;
+background:#000;
+overflow:hidden;
+}
+::placeholder{
+color:#aeaeae;
+}
+
+#head{
+color:#fff;
+margin-top:2rem;
+letter-spacing:1.5px;
+display:inline-block;
+font-weight:700;
+font-family: fantasy; 
+padding-bottom:10px;
+border-bottom:4px solid #fff;
+border-radius:10px;
+}
+p{
+color:#fff;			
+margin-top:2rem;
+padding:0px 15px;
+font-weight:400;
+line-height:20px;
+letter-spacing:1px;
+}
+
+
+#main{
+width:325px;
+height:50px;
+background:#2b303a;
+display: flex;
+align-items:center;
+position:absolute;
+left:50%;
+top:55%;
+transform:translate(-50%);
+color:#fff;
+padding:0;
+border-radius:100px;
+padding:0px 10px;
+border:2px solid #fff;
+}
+
+@media(max-width:350px){
+#main{
+transform:translate(-50%) scale(0.85);
+}				
+}
+
+#main h4{
+font-size:15px;
+}
+
+#main #go{
+width:220px;
+height:100%;
+background:transparent;
+border:none;
+outline:none;
+color:#fff;
+font-size:17px;
+font-weight:500;
+margin-left:9px;
+border-right:1px solid #fff;
+border-left:1px solid #fff;
+padding:0px 8px;
+}
+#main #goes{
+width:30px;
+height:100%;
+display:flex;align-items:center;justify-content:center; 
+font-weight:500;
+background:transparent;
+border-top-right-radius:20px;
+border-bottom-right-radius:20px;
+border:none;
+outline:none;
+color:#fff;
+font-size:17px;
+padding-left:15px;
+}
+
+
+/* for result */
+#for-result{
+width:100%;
+height:100vh;
+position:absolute;
+top:0;
+left:0;
+z-index:9999;
+background:#fff;
+display:none;
+}
+#for-result #xyz{
+width:100%;
+height:60px;
+position:absolute;
+top:0;
+background:#2b303a;
+color:#fff;
+padding:0px 20px;
+display:flex;
+align-items:center;
+}
+#for-result h3{
+margin-left:20px;	
+}
+#c-frame{
+width:100%;
+height: calc(100% - 60px); 
+display:block;
+margin-top:60px;
+outline:none;
+border:none;	
+}
+#for-result iframe{
+width:100%;
+height:100%; 
+}
+
+</style>
+
+<script>
+function get() {
+const y =document.getElementById("code");
+const x =document.getElementById("go").value;
+const z =document.getElementById("sc");
+document.getElementById("for-result").style.display ="block";
+y.src = "https://neatnik.net/view-source/" + x ;
+y.scrollTop(1000);
+}
+
+
+function clos() {
+document.getElementById("for-result").style.display ="none"; 				
+}
+</script>
+</body>
+</html>

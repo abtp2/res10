@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EMULATOR</title>
+    <meta name="viewport" content="width=device-width,initial-scale=0.27,user-scalable=no"/>
+    <script src="hammer_min.js" type="text/javascript"></script>
+</head>
+<body onload="get()">
+<div id="navbar">
+<h2 onclick="clos()"><font style="font-size:160px;font-weight:350;margin-left: 0.7rem;font-family:Arial;">×</font></h2>
+<h3 style="margin-left:5rem;">Device Emulator</h3>
+</div>				
+				
+    <div id="iframe_container">
+        <iframe id="iframe" allowusermedia allow="camera *;microphone *"></iframe>
+        <div class="handle" id="right_handle"></div>
+        <div class="handle" id="bottom_handle"></div>
+        <div class="handle" id="corner_handle"></div>
+    </div>
+
+
+
+<div id="suggest">
+     <button id="one" onclick="one()">320px</button>				
+      <button id="two" onclick="two()">375px</button>
+     <button id="three" onclick="three()">435px</button>				
+    <button id="four" onclick="four()">720px</button>
+    <button id="five" onclick="five()">1024px</button>				
+    <button id="six" onclick="six()">1440px</button>	 
+</div>
+
+
+
+<style>
+:root{
+    --handleSize: 25px;
+    --handlePadding: 10px;
+}
+
+html, body{
+    background: #000;
+    user-select:none;
+}
+
+body {
+    margin: 0;
+    height:100vh;
+    padding-top:30px;        
+    overflow:hidden;
+}
+
+#navbar{
+width:100%;	
+background:#2b303a;
+position:absolute;
+top:0;
+font-size:60px;
+display:flex;align-items:center;justify-content:flex-start;
+height:200px; 
+padding-left:50px;color:#fff;
+}
+
+#iframe_container{
+    display: block;
+    width:1240px;            
+    height:650px;
+    margin: auto;
+    resize: both;
+    overflow: auto;
+    position:relative;
+    overflow: visible; 
+    top:50%;
+    transform: translateY(-50%);
+}
+
+#iframe_container::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+} 
+
+#iframe::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+}
+
+#iframe {
+    width: 100%;      
+    height: 100%;
+    border: none;
+    background: #ffffff;
+}
+
+.handle{
+    background: #AAB4BE;
+    border-radius: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    overflow: hidden;
+}
+
+
+.handle:hover{
+    background: #A0A4AD;
+}
+
+.handle:active{
+    background: #7E838F;
+}
+
+.handle::after{
+    content: url('ic_emulator_handle.svg');
+     height: 25px;
+}
+
+#corner_handle::after{
+    content: url('ic_emulator_corner_handle.svg');
+    height: 23px;
+    width: 23px;
+    overflow: hidden;
+}
+
+#right_handle::after{
+    transform: rotate(90deg);
+}
+
+
+#right_handle{
+    position: absolute;
+    top: 0;
+    right: -35px;
+    width: 25px;
+    height: 100%;
+    cursor: ew-resize;
+}
+
+#bottom_handle{
+    position: absolute;
+    right: 0;
+    bottom: -35px;
+    width: 100%;
+    height: 25px;
+    cursor: ns-resize;
+}
+
+#corner_handle{
+    position: absolute;
+    bottom: -35px;
+    right: -35px;
+    width: 25px;
+    height: 25px;
+    cursor: nwse-resize;
+}
+
+
+
+#suggest{
+width:100%;
+position:fixed;
+background:#2b303a;
+bottom:5px;
+left:0;
+padding:12px 0px;
+display:flex;
+align-items:center;
+justify-content:space-around;
+}
+#suggest button{
+padding:12px 20px;
+font-weight:500;
+font-size:45px;
+border:none;
+outline:none;
+border-radius:10px;
+background:#7d839e;
+color:#fff;
+}
+
+</style>
+<script src="index.js" type="text/javascript"></script>
+
+<script>
+const x =document.getElementById("iframe_container");
+function clos() {
+window.location ="result.html";				
+}
+function one() {
+x.style.width ="340px";				
+x.style.transform ="scale(2.3) translateY(-50%)";
+x.style.top ="65%";
+x.style.height ="650px";
+}
+function two() {
+x.style.width ="375px";				
+x.style.transform ="scale(2.3) translateY(-50%)";
+x.style.top ="65%";
+x.style.height ="650px";
+}
+function three() {
+x.style.width ="435px";				
+x.style.transform ="scale(2.3) translateY(-50%)";
+x.style.top ="65%";
+x.style.height ="650px";
+}
+function four() {
+x.style.width ="720px";				
+x.style.transform ="scale(1.6) translateY(-50%)";
+x.style.top ="50%";
+x.style.height ="680px";
+}
+function five() {
+x.style.width ="1024px";				
+x.style.transform ="scale(1.2) translateY(-50%)";
+x.style.top ="50%";
+}
+function six() {
+x.style.width ="1440px";				
+x.style.transform ="scale(0.9) translateY(-50%)";
+x.style.height ="800px";
+x.style.top ="45%";
+}
+</script>
+
+
+
+
+
+</body>
+</html>

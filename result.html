@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+				<meta charset="UTF-8">
+				<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"/>
+				<title>Page title</title>
+</head>
+<body>
+     <div id="for-result">
+         <div id="inside">
+		   		  <h2 onclick="clos()">&#8592;</h2>
+		           <h3>Index.html</h3>
+		     <img src="comp.png" width="30" onclick="window.open('emulator.html')">
+         </div>     
+<iframe id="code"></iframe>		
+</div>				
+
+
+
+<style>
+body{
+width:100%;
+margin:0;
+padding:0;
+overflow:hidden;
+user-select:none;
+}
+#for-result{
+width:100%;
+height:100vh;
+top:0;
+left:0;
+background:#fff;
+}
+#for-result #inside{
+width:100vw;
+height:60px;
+position:absolute;
+top:0;
+background:#2b303a;
+color:#fff;
+display:flex;
+align-items:center;
+justify-content:flex-start;
+}
+#for-result img{
+position:absolute;
+right:10px;
+}
+#for-result h2{
+margin-left:20px;
+}
+#for-result h3{
+margin-left:10px;
+}
+#for-result iframe{
+width:100%;
+height: calc(100% - 60px); 
+display:block;
+margin-top:60px;
+outline:none;
+border:none;
+}
+				
+</style>
+
+
+<script src="result.js"></script>
+</body>
+</html>

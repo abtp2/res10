@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+				<meta charset="UTF-8">
+				<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"/>
+	<meta name="theme-color" content="#000000">
+				<link rel="stylesheet" href="style.css">
+				<title>Editor</title>				
+</head>
+<body onload="setInterval('check()', 10)">
+
+<!-- navbar -->
+<div id="nav">
+<div id="logo">
+<h2>GetWeb- </h2>
+<span> Editor</span></h2>
+</div>
+<div id="toggle" onclick="tog()">●</div>
+</div>
+
+<!-- changer -->
+<div id="change">
+	<button id="html" onclick="one()">HTML</button>
+	<button id="css" onclick="two()">CSS</button>
+	<button id="js" onclick="three()">Js</button>
+	<button id="result" onclick="se()">Result</button>
+	<button id="like" onclick="like()"><img src="pick.png" width="28"></button>
+</div>
+
+
+<!-- main div -->
+<!-- html -->
+<center>
+<textarea id="h-main" class="h-main" onkeyup="setInterval('stor()', 200)">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Page title</title>
+</head>
+<body>
+				
+</body>
+</html>
+</textarea>
+</center>
+<!-- css -->
+<center>
+<textarea id="c-main">
+body{
+margin:0;
+padding:0;
+width:100%;
+}
+</textarea>
+</center>
+<!-- JavaScript -->
+<center>
+<textarea id="j-main">
+//Write JavaScript here....
+</textarea>
+</center>
+
+
+<!-- suggestions 
+<div id="suggest">
+		<button onclick="as()"><</button>
+	   <button>></button>		
+	   <button>=" "</button>
+	   <button>-</button>
+	   <button>#</button>
+	   
+	   
+	   <button>{</button>
+	   <button>}</button>
+	   <button>:</button>
+	   <button>;</button>
+	   <button>%</button>
+	   <button>(</button>
+	   <button>)</button>
+	   <button>[</button>
+	   <button>]</button>
+</div> -->
+
+
+<!-- counters -->
+<div id="counter">
+<p>Total letters = <span id="l-count"></span></p>
+<p>Lang = <span id="c-lang"></span></p>	
+</div>
+
+
+
+
+
+
+
+
+
+<div id="hide-ashu">
+Ashutosh Pandey is a founder of "GetWeb"  foundation. 				
+</div>
+<style>
+#hide-ashu{
+display:inline-block;
+width:250px;
+font-size:15px;
+padding:7px 10px;
+margin:0 auto;
+background:#606060;
+position:absolute;
+bottom:60px;
+left:50%;
+transform:translateX(-50%);
+border-radius:15px;
+color:#fff;
+line-height:20px;
+z-index:9999;
+display:none;
+}		
+.hide-ashu{
+animation:hide 3s linear;
+opacity:0;
+}
+@keyframes hide{
+0%{
+opacity:1;
+}
+20%{
+opacity:1;
+}		
+40%{
+opacity:1;
+}
+45&{
+opacity:1;
+}
+50%{
+opacity:1;
+}		
+55%{
+opacity:1;
+}
+60%{
+opacity:0.8;
+}		
+65%{
+opacity:0.6;
+}
+70%{
+opacity:0.4;
+}
+75%{
+opacity:0.2;
+}
+100%{
+opacity:0;
+display:none;
+}
+}
+</style>
+
+
+
+<!-- iframe for result
+<div id="for-result">
+         <div id="inside">
+		   		  <h2 onclick="clos()">&#8592;</h2>
+		           <h3>Index.html</h3>
+		     <img src="comp.png" width="30" onclick="passvalue()">
+         </div>     
+<iframe id="code"></iframe>		
+</div> -->
+
+
+<script>
+function se(){				
+var first=document.getElementById("h-main").value;
+var second=document.getElementById("c-main").value;
+var third=document.getElementById("j-main").value;
+
+localStorage.setItem("html",first);
+localStorage.setItem("css",second);
+localStorage.setItem("js",third);
+window.location ="result.html";
+return false;
+}
+
+</script> 
+<script src="script.js"></script>
+</body>
+</html>
