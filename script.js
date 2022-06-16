@@ -129,6 +129,10 @@ document.getElementById("c-lang").innerHTML ="JavaScript";
 document.getElementById("hide-ashu").style.display ="block";
 document.getElementById("hide-ashu").classList.add("hide-ashu");
  } 
+else if (text.includes('ashutosh') === true) {
+document.getElementById("hide-ashu").style.display ="block";
+document.getElementById("hide-ashu").classList.add("hide-ashu");				
+}
  else { 
 document.getElementById("hide-ashu").style.display ="none";
 document.getElementById("hide-ashu").classList.remove("hide-ashu");

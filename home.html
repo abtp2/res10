@@ -184,8 +184,14 @@ localStorage.setItem("js",third);
 window.location ="result.html";
 return false;
 }
-
 </script> 
+
+<script>
+history.pushState(null, null, location.href); window.onpopstate = function () { 
+  history.go(1); 
+ window.open("index.html");
+  };
+</script>
 <script src="script.js"></script>
 </body>
 </html>
