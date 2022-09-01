@@ -92,7 +92,7 @@ x.innerText ="❤";
 
 
 
-function check() {
+setInterval(function check(){
 var m = x.value;
 var n = y.value;
 var o = z.value;
@@ -103,9 +103,7 @@ var r = o.replace(/\s+/g, '').length;
 
 
 
-if(x.style.display ==="none") {				
-}
-else {
+if(x.style.display ==="block") {				
 document.getElementById("l-count").innerHTML =p;			
 document.getElementById("c-lang").innerHTML ="HTML";			
 }
@@ -119,7 +117,7 @@ if(z.style.display ==="block") {
 document.getElementById("l-count").innerHTML =r;					
 document.getElementById("c-lang").innerHTML ="JavaScript";			
 }
-}
+}),1000;
 
 
 

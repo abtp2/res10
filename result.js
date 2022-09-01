@@ -7,6 +7,7 @@ var j =localStorage.getItem("js");
 window.onload = function() { 
 code.open(); code.writeln( h + "<style>" + c + "</style>" + "<script>" + j + "</script>" ); code.close(); }; } compile();
 
-function clos() {
-history.back();
+function clos(){
+window.open('home.html');
 }
+

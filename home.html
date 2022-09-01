@@ -61,26 +61,6 @@ width:100%;
 </center>
 
 
-<!-- suggestions 
-<div id="suggest">
-		<button onclick="as()"><</button>
-	   <button>></button>		
-	   <button>=" "</button>
-	   <button>-</button>
-	   <button>#</button>
-	   
-	   
-	   <button>{</button>
-	   <button>}</button>
-	   <button>:</button>
-	   <button>;</button>
-	   <button>%</button>
-	   <button>(</button>
-	   <button>)</button>
-	   <button>[</button>
-	   <button>]</button>
-</div> -->
-
 
 <!-- counters -->
 <div id="counter">
@@ -97,7 +77,7 @@ width:100%;
 
 
 <div id="hide-ashu">
-Ashutosh Pandey is a founder of "GetWeb"  foundation. 				
+Ashutosh Pandey is a founder of "GetWeb" and "Rollercss". 				
 </div>
 <style>
 #hide-ashu{
@@ -172,12 +152,39 @@ display:none;
 </div> -->
 
 
+
+
+
+
+
+
+
+<script>
+window.onload = function(){
+var aa = localStorage.getItem("text");
+var xx = localStorage.getItem("html");
+var yy = localStorage.getItem("css");
+var zz = localStorage.getItem("js");
+var first=document.getElementById("h-main").value;
+
+document.getElementById("h-main").style.display ="block";
+if(aa == 1){
+document.getElementById("h-main").value = xx;	
+document.getElementById("c-main").value = yy;	
+document.getElementById("j-main").value = zz;				
+}			
+}
+
+
+
+</script>
 <script>
 function se(){				
 var first=document.getElementById("h-main").value;
 var second=document.getElementById("c-main").value;
 var third=document.getElementById("j-main").value;
 
+localStorage.setItem("text",1);
 localStorage.setItem("html",first);
 localStorage.setItem("css",second);
 localStorage.setItem("js",third);
@@ -185,13 +192,6 @@ window.location ="result.html";
 return false;
 }
 </script> 
-
-<script>
-history.pushState(null, null, location.href); window.onpopstate = function () { 
-  history.go(1); 
- window.open("index.html");
-  };
-</script>
 <script src="script.js"></script>
 </body>
 </html>
