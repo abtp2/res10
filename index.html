@@ -29,7 +29,7 @@
 <button><span class="material-icons">info</span>About</button>
  </a>
  
- <a href="rollercss.netlify.app">
+ <a href="https://rollercss.netlify.app">
  <button><span class="material-icons">imagesearch_roller</span>Rollercss</button>
  </a>
 </div>
@@ -121,5 +121,13 @@ right:20px;
 }
 }
 </style>				
+
+
+<script type="text/javascript"> 
+self.addEventListener("fetch", function(event){ });
+	if ('serviceWorker' in navigator) { 
+console.log("Will the service worker register?"); navigator.serviceWorker.register('service-worker.js') .then(function(reg){ 
+console.log("Yes, it did."); }).catch(function(err) { 
+console.log("No it didn't. This happened:", err) }); } </script>
 </body>
 </html>
